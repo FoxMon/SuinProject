@@ -1632,7 +1632,7 @@ article > :last-child,
 article:last-child {
   margin-bottom: 0;
 }
-
+  
 header {
   margin: 0 0 1.5em 0;
 }
