@@ -3,6 +3,7 @@ package suinshop.suinbook.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import suinshop.suinbook.domain.Item.Item;
+import suinshop.suinbook.domain.Item.Medicine;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -21,6 +22,11 @@ public class ItemRepository {
             em.merge(item); // update
         }
     }
+
+//    public void loadMedicine(List<Medicine> medicines) {
+//
+//        em.persist(medicines);
+//    }
 
     public Item findOne(Long id) { // find item by id
 

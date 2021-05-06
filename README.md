@@ -11,5 +11,7 @@ Member Repository ,,,, etc....
 Add service logic & Business logic.
 
 # 4. API
-react <-> spirng
-axios...?
+Good
+
+# 5. Sample Data
+Good

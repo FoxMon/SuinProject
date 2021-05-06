@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import suinshop.suinbook.domain.Item.Item;
+import suinshop.suinbook.domain.Item.Medicine;
 import suinshop.suinbook.repository.ItemRepository;
 
 import java.util.List;
@@ -20,6 +21,12 @@ public class ItemService {
 
         itemRepository.save(item);
     }
+
+//    @Transactional
+//    public void saveMedicine(List<Medicine> medicines) {
+//
+//        itemRepository.loadMedicine(medicines);
+//    }
 
     public List<Item> findItems() {
 

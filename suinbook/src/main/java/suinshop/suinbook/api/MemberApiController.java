@@ -1,11 +1,13 @@
 package suinshop.suinbook.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import suinshop.suinbook.domain.Member;
 import suinshop.suinbook.service.MemberService;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -16,6 +18,8 @@ public class MemberApiController {
 
     @GetMapping("/api/v1/members")
     public List<Member> membersV1() {
+
+        ObjectMapper objectMapper = new ObjectMapper();
 
         return memberService.findMembers();
     }
