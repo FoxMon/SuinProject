@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import suinshop.suinbook.domain.Member;
+import suinshop.suinbook.encode.EncryptHandler;
 import suinshop.suinbook.repository.MemberRepository;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class MemberService {
 //    @Autowired
     private final MemberRepository memberRepository;
 
+    @Autowired
+    private EncryptHandler encryptHandler;
+
     /**
      * signup
      * */
@@ -25,6 +29,7 @@ public class MemberService {
     public Long join(Member member) {
 
         validateDuplicateMember(member); // check overlap member
+        member.setPassword(encryptHandler.encrypt(member.getPassword()));
         memberRepository.save(member);
 
         return member.getId();
