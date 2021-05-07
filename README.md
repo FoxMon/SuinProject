@@ -24,4 +24,4 @@ Sign Up && Sign In
 
 # 8. Item List....
 Item List -> Good.
-Paging -> ...ing
+Paging -> ...ing.
