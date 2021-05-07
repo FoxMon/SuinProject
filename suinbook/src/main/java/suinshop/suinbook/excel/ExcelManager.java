@@ -38,7 +38,7 @@ public class ExcelManager {
                 continue;
             }
 
-            if(row.getRowNum() > 100) {
+            if(row.getRowNum() > 101) {
 
                 break;
             }
