@@ -1,5 +1,5 @@
 # SuIn Project
-Back
+Back.
 
 # 1. Domain
 User, Order ,,,,,, etc....
@@ -11,7 +11,16 @@ Member Repository ,,,, etc....
 Add service logic & Business logic.
 
 # 4. API
-Good
+Sign In API, Sign Up API
 
 # 5. Sample Data
-Good
+Kind of medicine -> 100.
+
+# 6. Spring Security
+Security Config.
+
+# 7. Sign In, Sign Up
+Sign Up && Sign In
+
+# 8. Item List....
+Ing...

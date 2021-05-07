@@ -58,6 +58,29 @@ public class MemberService {
         return memberRepository.findOne(id);
     }
 
+    public Member login(Member member) {
+
+        Member findMember = memberRepository.findOneByName(member.getName());
+
+        if(findMember == null) {
+
+            return null;
+        }
+
+        if(encryptHandler.isMathch(member.getPassword(), findMember.getPassword())) {
+
+            System.out.println(encryptHandler.isMathch(member.getPassword(), findMember.getPassword()));
+            findMember.setPassword(member.getPassword());
+
+            return findMember;
+        } else {
+
+            member.setPassword("error");
+
+            return member;
+        }
+    }
+
     @Transactional
     public void update(Long id, String name) {
 

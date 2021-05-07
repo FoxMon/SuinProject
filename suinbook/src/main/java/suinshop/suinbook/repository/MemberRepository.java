@@ -25,6 +25,20 @@ public class MemberRepository {
         return em.find(Member.class, id);
     }
 
+    public Member findOneByName(String name) { // find member by name
+
+        try {
+
+            return em.createQuery("select m from Member m where m.name = :name", Member.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } catch(Exception e) {
+
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public List<Member> findAll() { // JPQL -> from target is Entity
 
         return  em.createQuery("select m from Member m", Member.class)
