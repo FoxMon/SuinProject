@@ -37,4 +37,9 @@ public class ItemService {
 
         return itemRepository.findOne(itemId);
     }
+
+    public List<Item> findPageItem(int start, int end) {
+
+        return itemRepository.findByPage(start, end);
+    }
 }

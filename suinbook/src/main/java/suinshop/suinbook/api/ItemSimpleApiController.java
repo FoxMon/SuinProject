@@ -1,6 +1,9 @@
 package suinshop.suinbook.api;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import suinshop.suinbook.domain.Item.Item;
 import suinshop.suinbook.domain.Item.Medicine;
 import suinshop.suinbook.domain.Member;
+import suinshop.suinbook.repository.ItemRepository;
 import suinshop.suinbook.service.ItemService;
 
 import java.util.List;
@@ -48,5 +52,29 @@ public class ItemSimpleApiController {
     public Item getCartItems(@RequestBody Medicine item) {
 
         return itemService.findOne(item.getId());
+    }
+
+    @GetMapping("/api/v1/items/page")
+    public List<Item> getPageItems() {
+
+        int start = 0;
+        int end = 20;
+
+        return itemService.findPageItem(start, end);
+    }
+
+    @PostMapping("/api/v1/items/page/post")
+    public List<Item> postPageItems(@RequestBody PageNumber pageNumber) {
+
+        int start = (pageNumber.getPageNumber() - 1) * 20;
+        int end = 20;
+
+        return itemService.findPageItem(start, end);
+    }
+
+    @Data
+    static class PageNumber {
+
+        private int pageNumber;
     }
 }
