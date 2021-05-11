@@ -1,0 +1,41 @@
+.footer_body {
+    width : 100%;
+    text-align : center;
+    background-color : black;
+}
+
+.row {
+    margin-top : 2%;
+    display : flex;
+    justify-content : space-between;
+}
+
+.footer-col {
+    color : white;
+    flex-basis : 35%;
+    margin-top : 5%;
+    margin-bottom : 2%;
+    margin-left : 5%;
+    padding : 20px 12px;
+    box-sizing : border-box;
+    text-align: left;
+}
+
+.footer-col p {
+    margin-top : 5%;
+    color : #aaaaaa;
+    font-style: normal;
+}
+
+.footer-col2 {
+    color : white;
+    flex-basis : 35%; 
+    margin-bottom : 5%;
+    margin-left : 5.5%;
+    box-sizing : border-box;
+    text-align: left;
+}
+
+.footer-col2 p {
+    color : #aaaaaa;
+}
