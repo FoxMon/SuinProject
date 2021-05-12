@@ -22,6 +22,9 @@ Security Config.
 # 7. Sign In, Sign Up
 Sign Up && Sign In
 
-# 8. Item List....
+# 8. Item List
 Item List -> Good.
 Paging -> Good.
+
+# Order List
+Ing...
