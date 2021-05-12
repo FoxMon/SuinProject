@@ -3,9 +3,11 @@ package suinshop.suinbook.api;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import suinshop.suinbook.domain.Member;
 import suinshop.suinbook.encode.EncryptHandler;
+import suinshop.suinbook.jwt.JwtTokenProvider;
 import suinshop.suinbook.repository.MemberRepository;
 import suinshop.suinbook.service.MemberService;
 
@@ -17,6 +19,8 @@ import java.util.List;
 public class MemberApiController {
 
     private final MemberService memberService;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("/api/v1/members")
     public List<Member> membersV1() {
@@ -30,21 +34,11 @@ public class MemberApiController {
         Member findMember =  memberService.login(member);
         CheckMemberResponse checkMemberResponse = new CheckMemberResponse();
 
-        if(findMember != null) {
-
-            if(findMember.getPassword().equals("error")) {
-
-                return new CheckMemberResponse(findMember.getName(), findMember.getPassword(), false);
-            }
-
-            return new CheckMemberResponse(findMember.getName(), findMember.getPassword(), true);
-        } else {
-
-            checkMemberResponse.setName(member.getName());
-            checkMemberResponse.setPassword(member.getPassword());
-
+        if(!passwordEncoder.matches(member.getPassword(), findMember.getPassword())) {
             return checkMemberResponse;
         }
+
+        return new CheckMemberResponse(findMember.getName(), findMember.getPassword(), true);
     }
 
     @PostMapping("/api/v1/members/signup")
@@ -53,6 +47,18 @@ public class MemberApiController {
         Long id = memberService.join(member);
 
         return new CreateMemberResponse(id);
+    }
+
+    @PostMapping("/api/v1/members/login")
+    public String login(@RequestBody Member member) {
+
+        Member findmember = memberService.login(member);
+
+        if(!passwordEncoder.matches(member.getPassword(), findmember.getPassword())) {
+            throw new IllegalArgumentException("unknown user");
+        }
+
+        return jwtTokenProvider.createToken(findmember.getUsername());
     }
 
     @Data

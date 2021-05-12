@@ -3,6 +3,9 @@ package suinshop.suinbook.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import suinshop.suinbook.domain.Member;
@@ -14,7 +17,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true) // optimization
 @RequiredArgsConstructor
-public class MemberService {
+public class MemberService implements UserDetailsService {
 
 //    @Autowired
     private final MemberRepository memberRepository;
@@ -62,23 +65,7 @@ public class MemberService {
 
         Member findMember = memberRepository.findOneByName(member.getName());
 
-        if(findMember == null) {
-
-            return null;
-        }
-
-        if(encryptHandler.isMathch(member.getPassword(), findMember.getPassword())) {
-
-            System.out.println(encryptHandler.isMathch(member.getPassword(), findMember.getPassword()));
-            findMember.setPassword(member.getPassword());
-
-            return findMember;
-        } else {
-
-            member.setPassword("error");
-
-            return member;
-        }
+        return findMember;
     }
 
     @Transactional
@@ -86,5 +73,14 @@ public class MemberService {
 
         Member member = memberRepository.findOne(id);
         member.setName(name);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        try {
+            return (UserDetails) memberRepository.findByName(username);
+        } catch (Exception e) {
+            return (UserDetails) new UsernameNotFoundException("Unknown user");
+        }
     }
 }

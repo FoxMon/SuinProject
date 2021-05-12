@@ -14,7 +14,6 @@ import Navbar from './components/Navbar';
 import Backdrop from './components/Backdrop';
 import SideDrawer from './components/SideDrawer';
 import Footer from './components/Footer';
-import Page from './components/Page';
 
 function App() {
 
@@ -34,7 +33,6 @@ function App() {
           <Route exact path="/signup" component={SignUpScreen} />
         </Switch>
       </main>
-      <Page/>
       <Footer/>
     </Router>
   );
