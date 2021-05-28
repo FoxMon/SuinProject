@@ -73,6 +73,7 @@ public class ExcelManager {
                 }
             }
 
+            item.setStockQuantity(100);
             itemList.add(item);
         }
 

@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 5px;
 }
 
 .product > img {
@@ -14,7 +15,9 @@
   border-radius: 10px;
 }
 .product_info > p {
+  margin-top : 10px;
   margin-bottom: 10px;
+  font-weight : bold;
 }
 .info_price {
   font-weight: bold;
@@ -34,16 +37,20 @@
   width: 100%;
   text-decoration: none;
   text-align: center;
-  color: #171717;
-  background: #f4f4f4;
+  color: black;
+  background: rgb(212, 212, 212);
+  font-weight : bold;
   padding: 8px 16px;
-  border: 1px solid #171717;
+  border: 1px solid rgb(233, 233, 233);
+  border-radius : 10px;
   font-size: 1rem;
 }
 
 .info_button:hover {
-  background: #171717;
-  color: #f4f4f4;
+  background : transparent;
+  color: #dd219e;
+  border : 1px solid #dd219e;
+  transition : 1s;
 }
 
 /* 상품 미디어 쿼리 참조함. */

@@ -4,18 +4,20 @@
 }
 
 .page_button {
-display : inline-block;
-margin : 1.5px;
-text-decoration : none;
-text-align : center;
-color : white;
-background: black;
-padding: 6px 14px;
-font-size : 1rem;
-font-weight : bold;
+    display : inline-block;
+    margin : 2px;
+    text-decoration : none;
+    text-align : center;
+    color : white;
+    background: black;
+    padding: 6px 14px;
+    font-size : 1rem;
+    font-weight : bold;
+    border : 1px solid black;
 }
 
 .page_button:hover {
     background: #dd219e;
     color: #f4f4f4;
+    transition : 0.5s;
 }

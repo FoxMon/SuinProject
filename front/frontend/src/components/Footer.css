@@ -4,7 +4,7 @@
     background-color : black;
 }
 
-.row {
+.footer_row {
     margin-top : 2%;
     display : flex;
     justify-content : space-between;

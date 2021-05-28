@@ -2,14 +2,13 @@ import * as actionTypes from '../constants/cartConstants';
 import axios from 'axios';
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
-    // const { data } = await axios.get(`/api/products/${id}`);
+
     try {
         const { data } = await axios.post(
             "/api/v1/items/cart", {
                 id : productId,
             }
         );
-        console.log(data);
         dispatch({
             type: actionTypes.ADD_TO_CART,
             payload: {
@@ -22,10 +21,31 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
             }
         })
         localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems));
-        console.log(data.productId);
     } catch(err) {
         console.log(err);
     }
+
+    const getMemberId = async () => {
+
+        await axios.get(
+            "/api/v1/members/id"
+        ).then(function(response) {
+            console.log("response data = ", response.data);
+            axios.post(
+                "/api/v1/order/cart", {
+                    itemId : productId,
+                    count : qty,
+                    memberId : response.data,
+                    memberName : localStorage.getItem("userName"),
+                }
+            );
+            console.log("성공")
+        }).catch(function(err) {
+            console.log(err);
+        });
+    }
+
+    getMemberId();
 };
 
 export const removeFromCart = (id) => (dispatch, getState) => {
@@ -33,5 +53,5 @@ export const removeFromCart = (id) => (dispatch, getState) => {
         type: actionTypes.REMOVE_FROM_CART,
         payload: id
     })
-    localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
+    localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems));
 }

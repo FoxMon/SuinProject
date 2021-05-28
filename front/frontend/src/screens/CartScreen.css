@@ -17,6 +17,7 @@
   flex: 0.3;
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
   height: fit-content;
 }
 
@@ -39,11 +40,15 @@
   background: #171717;
   color: #fff;
   border: 1px solid #171717;
+  border-radius : 5px;
   cursor: pointer;
 }
 
 .cartscreen_right div button:hover {
-  opacity: 0.9;
+  color : #dd219e;
+  background : transparent;
+  border : 1px solid #dd219e;
+  transition : 1s;
 }
 
 @media (max-width: 1320px) {

@@ -20,6 +20,8 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY) // 주인잡힌놈한테는 mappedBy 잡아주자.
     private Order order;
 
+    private String fullAddress;
+
     @Embedded
     private Address address;
 

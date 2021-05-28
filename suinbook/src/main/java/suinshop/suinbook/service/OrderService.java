@@ -3,11 +3,8 @@ package suinshop.suinbook.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import suinshop.suinbook.domain.Delivery;
+import suinshop.suinbook.domain.*;
 import suinshop.suinbook.domain.Item.Item;
-import suinshop.suinbook.domain.Member;
-import suinshop.suinbook.domain.Order;
-import suinshop.suinbook.domain.OrderItem;
 import suinshop.suinbook.repository.ItemRepository;
 import suinshop.suinbook.repository.MemberRepository;
 import suinshop.suinbook.repository.OrderRepository;
@@ -34,7 +31,9 @@ public class OrderService {
 
         // create delivery
         Delivery delivery = new Delivery();
-        delivery.setAddress(member.getAddress());
+//        delivery.setAddress(member.getAddress());
+        delivery.setFullAddress(member.getFullAddress());
+        delivery.setStatus(DeliveryStatus.ORDER);
 
         // create order item
         OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);

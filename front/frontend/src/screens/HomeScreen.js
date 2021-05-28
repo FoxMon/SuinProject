@@ -18,11 +18,12 @@ const HomeScreen = () => {
 
     useEffect(() => {
         dispatch(listProducts())
+        // console.log(axios.defaults.headers.common['Authorization']);
     }, [dispatch]);
 
     return (
         <div className="homescreen">
-            <h2 className="homescreen_title">latest products</h2>
+            <h2 className="homescreen_title">Latest Products</h2>
             <div className="homescreen_products">
                 {loading ? (
                     <h2>Loading...</h2>

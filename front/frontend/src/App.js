@@ -8,6 +8,8 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import SignInScrren from './screens/SignInScreen';
+import OrderScreen from './screens/OrderScreen';
+import MainScreen from './screens/MainScreen';
 
 //Components
 import Navbar from './components/Navbar';
@@ -26,11 +28,13 @@ function App() {
       <Backdrop show={sideToggle} click={() => setSideTogle(false)} />
       <main>
         <Switch>
-          <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/" component={MainScreen} />
+          <Route exact path="/home" component={HomeScreen} />
           <Route exact path="/product/:id" component={ProductScreen} />
           <Route exact path="/cart" component={CartScreen} />
           <Route exact path="/signin" component={SignInScrren} />
           <Route exact path="/signup" component={SignUpScreen} />
+          <Route exact path="/order" component={OrderScreen} />
         </Switch>
       </main>
       <Footer/>

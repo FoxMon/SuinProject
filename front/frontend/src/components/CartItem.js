@@ -1,6 +1,6 @@
 import './CartItem.css'
 import { Link } from 'react-router-dom'
-const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
+const CartItem = ({ item, qtyChangeHandler, removeHandler, isOrderScreen }) => {
     return (
         <div className="cartitem">
             <div className="cartitem_image">
@@ -17,12 +17,13 @@ const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
 
             <select className="cartitem_select" value={item.qty} onChange={(e) => qtyChangeHandler(item.product, e.target.value)}>
                 {[...Array(item.countInStock).keys()].map(x => (
-                    <option key={x + 1} value={x + 1}>{x + 1}</option>
+                    <option>{item.qty}</option>
                 ))}
             </select>
-            <button className="cartitem_deleteBtn" onClick={() => removeHandler(item.product)}>
+            { !isOrderScreen && <button className="cartitem_deleteBtn" onClick={() => removeHandler(item.product)}>
                 <i className="fas fa-trash"></i>
-            </button>
+            </button> }
+            { isOrderScreen && <i className = "fa fa-shopping-bag"></i> }
         </div>
     )
 }

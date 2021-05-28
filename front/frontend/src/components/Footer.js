@@ -4,7 +4,7 @@ const Footer = () => {
 
     return ( 
         <footer className = "footer_body">
-            <div className = "row">
+            <div className = "footer_row">
                 <div className = "footer-col">
                     <h2>SUIN-PHARMACY</h2>
                     <p>
@@ -29,7 +29,7 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
-            <div className = "row">
+            <div className = "footer_row">
                 <div className = "footer-col2">
                     <p>
                         Copyright : ⓒSUIN-PHARMACY

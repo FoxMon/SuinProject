@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails } from '../redux/actions/productActions'
 import { addToCart } from '../redux/actions/cartAction'
 
+import axios from 'axios';
+
 const ProductScreen = ({ match, history }) => {
 
     const [qty, setQty] = useState(1);
@@ -23,15 +25,13 @@ const ProductScreen = ({ match, history }) => {
     useEffect(() => {
         if (product && match.params.id !== product.id) {
             dispatch(getProductDetails(match.params.id))
-        }
+        } 
     }, []);
 
     const addToCartHandler = () => {
         dispatch(addToCart(product.id, qty));
         history.push("/cart");
     }
-
-
 
     return (
         <div className="productscreen">
@@ -60,12 +60,12 @@ const ProductScreen = ({ match, history }) => {
                                 Price : <span>{product.price}원</span>
                             </p>
                             <p>
-                                Status : <span>{product.countInStock > 0 ? "In Stock" : "Out of Stock"}</span>
+                                Status : <span>{product.stockQuantity > 0 ? "In Stock" : "Out of Stock"}</span>
                             </p>
                             <p>
                                 Qty
                             <select value={qty} onChange={(e) => setQty(e.target.value)}>
-                                    {[...Array(product.countInStock).keys()].map((x) => (
+                                    {[...Array(product.stockQuantity).keys()].map((x) => (
                                         <option key={x + 1} value={x + 1}>{x + 1}</option>
                                     ))}
                                 </select>

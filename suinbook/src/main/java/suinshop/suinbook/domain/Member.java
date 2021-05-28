@@ -33,6 +33,7 @@ public class Member implements UserDetails {
     private String phone_num1;
     private String phone_num2;
     private String email;
+    private String fullAddress;
 
     @Embedded
     private Address address;

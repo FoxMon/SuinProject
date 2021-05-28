@@ -6,8 +6,8 @@
   grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
   gap: 8px;
   background: #fff;
-  border-radius: 2px;
   place-items: center;
+  border-radius: 5px;
 }
 
 .cartitem_name {

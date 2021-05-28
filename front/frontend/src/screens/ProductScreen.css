@@ -19,6 +19,7 @@
   flex: 0.4;
   background: #fff;
   height: fit-content;
+  font-weight: bold;
   font-size: 0.9rem;
 }
 
@@ -46,6 +47,7 @@
   margin: 1rem;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
 }
 
 .right_info p {
@@ -62,6 +64,16 @@
   color: #f4f4f4;
   border: 1px solid #171717;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.right_info p > button:hover {
+  background : transparent;
+  border : 1px solid #dd219e;
+  color : #dd219e;
+  transition : 1s;
 }
 
 .right_info select {

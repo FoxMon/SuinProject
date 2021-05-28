@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+
+import PopupPostCode from '../components/PopupPostCode';
+import PopupDom from '../components/PopupDom';
+
 import './SignUpScreen.css';
 
 const SignUpScreen = () => {
@@ -12,7 +16,7 @@ const SignUpScreen = () => {
     const [phone_num1, setPhone_num1] = useState('');
     const [phone_num2, setPhone_num2] = useState('');
     const [email, setEmail] = useState('');
-    const [address, setAddress] = useState('');
+    const [fullAddress, setFullAddress] = useState('');
     const [passwordError, setPasswordError] = useState(false);
     const onSubmitHandler = (e) => {
 
@@ -80,6 +84,22 @@ const SignUpScreen = () => {
         setPhone_num2(e.target.value);
     }
 
+    const onChangeAddress = (target) => {
+
+        setFullAddress(target);
+    }
+
+    // address api
+    const [isPopupOpen, setIsPopupOpen] = useState(false)
+ 
+    const openPostCode = () => {
+        setIsPopupOpen(true)
+    }
+
+    const closePostCode = () => {
+        setIsPopupOpen(false)
+    }
+
     /**
      * user post
      */
@@ -94,7 +114,8 @@ const SignUpScreen = () => {
                     password : password,
                     phone_num1 : phone_num1,
                     phone_num2 : phone_num2,
-                    email : email
+                    email : email,
+                    fullAddress : fullAddress
                 }
             );
 
@@ -116,32 +137,38 @@ const SignUpScreen = () => {
             <div className = "form">
                 <form id = "signup_form" onSubmit = {onSubmitHandler}>
                     <legend><span className = "base">!</span>Your basic info</legend>
-                    <label for = "name">Name:</label>
+                    <label htmlFor = "name">Name:</label>
                     <input type = "text" id = "name" name = "user_name" value = {name} onChange = {onChangeName}></input>
                     
-                    <label for = "mail">Email:</label>
+                    <label htmlFor = "mail">Email:</label>
                     <input type = "email" id = "mail" name = "user_email" value = {email} onChange = {onChangeEmail}></input>
                     
-                    <label for = "password">Password:</label>
+                    <label htmlFor = "password">Password:</label>
                     <input type = "password" id = "password" name = "user_password" 
                             value = {password} onChange = {onChangePassword}></input>
 
-                    <label for = "passwordCheck">PasswordCheck:</label>
+                    <label htmlFor = "passwordCheck">PasswordCheck:</label>
                     <input type = "password" id = "passwordCheck" name = "user_password_check" 
                             value = {passwordCheck} onChange = {onChangePasswordCheck}></input>
 
-                    <label for = "phone_num1">Phone:</label>
+                    <label htmlFor = "phone_num1">Phone:</label>
                     <input type = "text" id = "phone_num1" name = "user_phone_num1" 
                             value = {phone_num1} onChange = {onChangePhone}></input>
 
-                    <label for = "phone_num2">Tel:</label>
+                    <label htmlFor = "phone_num2">Tel:</label>
                     <input type = "text" id = "phone_num2" name = "user_phone_num2" 
                             value = {phone_num2} onChange = {onChangeTel}></input>
 
-                    {/* <label for = "address">Address:</label>
+                    <label htmlFor = "address">Address:
+                        <button id = "address_button" type = 'button' onClick={openPostCode}>Address</button>
+                        <div id = "popupDom"> {isPopupOpen && (
+                            <PopupDom>
+                                <PopupPostCode onClose = {closePostCode} onChangeAddress = {onChangeAddress} />
+                            </PopupDom> )}
+                        </div>
+                    </label>
                     <input type = "text" id = "address" name = "user_address" 
-                    ></input> */}
-
+                            readOnly = {true} value = {fullAddress}></input>
 
                     <button id = "submit_button" type = "submit">Sign Up</button>
                     {signUpCheck && (<Redirect to = "/signin"></Redirect>)}

@@ -14,8 +14,13 @@
 
 .navbar_logo h2 {
   color: #f4f4f4;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   cursor: pointer;
+}
+
+.navbar_logo h2:hover {
+  color : #2ddf7d;
+  transition : 1s;
 }
 
 .navbar_links {
@@ -36,6 +41,11 @@
   align-items: center;
 }
 
+.navbar_links > li > a:hover {
+  color : #dd219e;
+  transition : 1s;
+}
+
 .navbar_links > li > a > span {
   display: flex;
   align-items: center;
@@ -49,8 +59,9 @@
 }
 
 .cart_link:hover {
-  background: #dd219e;
+  /* background: #dd219e; */
   color: #f4f4f4;
+  transition : 1s;
 }
 
 .cartlogo_badge {
@@ -84,6 +95,16 @@
 
 .hamburger_menu:hover > div {
   background: #dd219e;
+}
+
+.logout_btn {
+  text-decoration : none;
+  background-color : transparent;
+  border : none;
+  color : white;
+  margin-right : 15px;
+  cursor : pointer;
+  font-size : 1.2em;
 }
 
 @media (max-width: 960px) {

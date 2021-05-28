@@ -22,12 +22,17 @@ public class MemberApiController {
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordEncoder passwordEncoder;
 
+    CreateMemberResponse createMemberResponse;
+
     @GetMapping("/api/v1/members")
     public List<Member> membersV1() {
 
         return memberService.findMembers();
     }
 
+    /**
+     * 이거 대신 members/login씀
+     * */
     @PostMapping("/api/v1/members/signin")
     public CheckMemberResponse memberLogin(@RequestBody Member member) {
 
@@ -53,12 +58,19 @@ public class MemberApiController {
     public String login(@RequestBody Member member) {
 
         Member findmember = memberService.login(member);
+        createMemberResponse = new CreateMemberResponse(findmember.getId());
 
         if(!passwordEncoder.matches(member.getPassword(), findmember.getPassword())) {
             throw new IllegalArgumentException("unknown user");
         }
 
         return jwtTokenProvider.createToken(findmember.getUsername());
+    }
+
+    @GetMapping("/api/v1/members/id")
+    public Long memberId() {
+
+        return createMemberResponse.getId();
     }
 
     @Data

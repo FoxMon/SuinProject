@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import suinshop.suinbook.domain.Cart;
 import suinshop.suinbook.domain.Item.Item;
 import suinshop.suinbook.domain.Item.Medicine;
 import suinshop.suinbook.domain.Member;
+import suinshop.suinbook.repository.CartRepository;
 import suinshop.suinbook.repository.ItemRepository;
+import suinshop.suinbook.repository.MemberRepository;
 import suinshop.suinbook.service.ItemService;
+import suinshop.suinbook.service.MemberService;
 
 import java.util.List;
 

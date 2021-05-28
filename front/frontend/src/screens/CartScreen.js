@@ -47,7 +47,7 @@ const CartScreen = () => {
                     <p>{getCartSubTotal()}원</p>
                 </div>
                 <div>
-                    <button>Proceed To Checkout</button>
+                    <Link to = "/order"><button>Proceed To Checkout</button></Link>
                 </div>
             </div>
         </div>

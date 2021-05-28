@@ -4,8 +4,6 @@ import { getProducts as listProducts } from '../redux/actions/productActions';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 
-import axios from 'axios'
-
 const Page = () => {
 
     const dispatch = useDispatch();
@@ -34,11 +32,11 @@ const Page = () => {
 
     return (
         <div className = "page">
-            <Link to = "/" className = "page_button" onClick = {buttonHandler01}>1</Link>
-            <Link to = "/" className = "page_button" onClick = {buttonHandler02}>2</Link>
-            <Link to = "/" className = "page_button" onClick = {buttonHandler03}>3</Link>
-            <Link to = "/" className = "page_button" onClick = {buttonHandler04}>4</Link>
-            <Link to = "/" className = "page_button" onClick = {buttonHandler05}>5</Link>
+            <Link to = "/home" className = "page_button" onClick = {buttonHandler01}>1</Link>
+            <Link to = "/home" className = "page_button" onClick = {buttonHandler02}>2</Link>
+            <Link to = "/home" className = "page_button" onClick = {buttonHandler03}>3</Link>
+            <Link to = "/home" className = "page_button" onClick = {buttonHandler04}>4</Link>
+            <Link to = "/home" className = "page_button" onClick = {buttonHandler05}>5</Link>
         </div>
     );
 }
