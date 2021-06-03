@@ -17,6 +17,13 @@ import Backdrop from './components/Backdrop';
 import SideDrawer from './components/SideDrawer';
 import Footer from './components/Footer';
 
+//Payment
+import Payment from './Payment';
+import PaymentResult from './PaymentResult';
+import Certification from './Certification';
+import CertificationResult from './CertificationResult';
+import paymentHome from './payment_page';
+
 function App() {
 
   const [sideToggle, setSideTogle] = useState(false);
@@ -35,6 +42,11 @@ function App() {
           <Route exact path="/signin" component={SignInScrren} />
           <Route exact path="/signup" component={SignUpScreen} />
           <Route exact path="/order" component={OrderScreen} />
+          <Route exact path="/payment" component={Payment} />
+          <Route exact path="/payment/result" component={PaymentResult} />
+          <Route exact path="/certification" component={Certification} />
+          <Route exact path="/certification/result" component={CertificationResult} />
+          <Route exact path="/paymenthome" component={paymentHome} />
         </Switch>
       </main>
       <Footer/>

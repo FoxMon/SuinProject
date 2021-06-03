@@ -28,3 +28,9 @@ Paging -> Good.
 
 # 9. Order List
 Good
+
+# 10. Address API
+Good
+
+# 11. Checkout
+Test -> Good

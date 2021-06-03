@@ -28,12 +28,7 @@ const OrderScreen = () => {
     const { cartItems } = cart;
 
     const checkOutHandler = () => {
-        // try {
-        //     await axios.post(
-        //         'api/v1/member/orders', {
-        //         }
-        //     )
-        // }
+        window.location.replace('/paymenthome');
     }
 
     return (
@@ -76,7 +71,7 @@ const OrderScreen = () => {
                             </div>
                         </div>
                         {/* press submit -> back -> set order and delivery table -> axios post ok? */}
-                        <input type="submit" value="Continue to checkout" onClick = {checkOutHandler} class="btn"/>
+                        <Link to = "/paymenthome"><button type="submit" onClick = {checkOutHandler} class="btn">Continue to checkout</button></Link>
                     </form>
                 </div>
             </div>
