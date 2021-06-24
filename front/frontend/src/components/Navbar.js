@@ -26,17 +26,30 @@ const Navbar = ({ click }) => {
             </Link>
             {/* links */}
             <ul className="navbar_links">
-            {localStorage.getItem("signIn") && (
+                {localStorage.getItem("signIn") && (
                 <li>
                     <Link to="/cart" className="cart_link">
                         <i className="fas fa-shopping-cart"></i>
-                        <span>cart
+                        <span>Cart
                             <span className="cartlogo_badge">{cartItems.length}</span>
                         </span>
                     </Link>
                 </li>)}
+                {localStorage.getItem("signIn") && (
                 <li>
-                    <Link to="/home">Shop</Link>
+                    <Link to = "/member" className = "info_link">
+                        <i className="fas fa-user"></i>
+                        <span>
+                            User
+                        </span>
+                    </Link>
+                </li>
+                )}
+                <li>
+                    <Link to="/home" className = "shop_link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Shop</span>
+                    </Link>
                 </li>
                 {!localStorage.getItem("signIn") && (
                 <li>
@@ -48,7 +61,7 @@ const Navbar = ({ click }) => {
                 </li>)}
                 {localStorage.getItem("signIn") && (
                 <li>
-                    <button className = "logout_btn" type = "submit" onClick = {onClickLogout}>Logout</button>
+                    <button id = "logout" className = "logout_btn" type = "submit" onClick = {onClickLogout}>Logout</button>
                 </li>)}
             </ul>
             {/* hamburger menu */}

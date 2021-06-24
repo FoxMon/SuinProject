@@ -10,12 +10,16 @@ import SignUpScreen from './screens/SignUpScreen';
 import SignInScrren from './screens/SignInScreen';
 import OrderScreen from './screens/OrderScreen';
 import MainScreen from './screens/MainScreen';
+import MemberScreen from './screens/MemberScreen';
 
 //Components
 import Navbar from './components/Navbar';
 import Backdrop from './components/Backdrop';
 import SideDrawer from './components/SideDrawer';
 import Footer from './components/Footer';
+import ListBoardComponent from './components/ListBoardComponent';
+import CreateBoardComponent from './components/CreateBoardComponent';
+import ReadBoardComponent from './components/ReadBoardComponent';
 
 //Payment
 import Payment from './Payment';
@@ -47,10 +51,24 @@ function App() {
           <Route exact path="/certification" component={Certification} />
           <Route exact path="/certification/result" component={CertificationResult} />
           <Route exact path="/paymenthome" component={paymentHome} />
+          <Route exact path="/member" component={MemberScreen} />
+          <Route path = "/board" component = {ListBoardComponent}/>
+          <Route path = "/create-board/:no" component = {CreateBoardComponent}/>
+          <Route path = "/read-board/:no" component = {ReadBoardComponent}/>
         </Switch>
       </main>
       <Footer/>
     </Router>
+    // <> 
+    //   <Router>
+    //     <Switch>
+    //       <Route path = "/" exact component = {ListBoardComponent}></Route>
+    //       <Route path = "/boards" component = {ListBoardComponent}></Route>
+    //       <Route path = "/create-board/:no" component = {CreateBoardComponent}></Route>
+    //       <Route path = "/read-board/:no" component = {ReadBoardComponent}></Route>
+    //     </Switch>
+    //   </Router>
+    // </>
   );
 }
 

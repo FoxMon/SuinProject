@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import suinshop.suinbook.domain.Board;
 import suinshop.suinbook.domain.Item.Medicine;
 import suinshop.suinbook.excel.ExcelManager;
+import suinshop.suinbook.service.BoardService;
 import suinshop.suinbook.service.ItemService;
 
 import javax.annotation.PostConstruct;
@@ -19,11 +21,13 @@ import java.util.List;
 public class InitDataBase {
 
     private final InitService initService;
+    private final BoardService boardService;
 
     @PostConstruct
     public void init() throws IOException {
 
         initService.dbInit();
+        boardService.createBoard(new Board());
     }
 
     @Service

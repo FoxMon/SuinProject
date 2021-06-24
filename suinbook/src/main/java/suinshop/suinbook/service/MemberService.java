@@ -61,6 +61,11 @@ public class MemberService implements UserDetailsService {
         return memberRepository.findOne(id);
     }
 
+    public Member findNameOne(Member member) {
+
+        return memberRepository.findOneByName(member.getName());
+    }
+
     public Member login(Member member) {
 
         Member findMember = memberRepository.findOneByName(member.getName());
@@ -73,6 +78,17 @@ public class MemberService implements UserDetailsService {
 
         Member member = memberRepository.findOne(id);
         member.setName(name);
+    }
+
+    @Transactional
+    public Member updateMember(Member member) {
+
+        Member updateMember = memberRepository.findOneByName(member.getName());
+        updateMember.setEmail(member.getEmail());
+        updateMember.setPhone_num1(member.getPhone_num1());
+        updateMember.setPhone_num2(member.getPhone_num2());
+
+        return updateMember;
     }
 
     @Override

@@ -67,6 +67,22 @@ public class MemberApiController {
         return jwtTokenProvider.createToken(findmember.getUsername());
     }
 
+    @PostMapping("/api/v1/members/user")
+    public Member user(@RequestBody Member member) {
+
+        Member userInfo = memberService.findNameOne(member);
+
+        return userInfo;
+    }
+
+    @PostMapping("/api/v1/members/update")
+    public UpdateMemberResponse update(@RequestBody Member member) {
+
+        Member updateMember = memberService.updateMember(member);
+
+        return new UpdateMemberResponse(updateMember.getName(), updateMember.getEmail());
+    }
+
     @GetMapping("/api/v1/members/id")
     public Long memberId() {
 
@@ -124,6 +140,19 @@ public class MemberApiController {
             this.name = name;
             this.password = password;
             this.loginFlag = loginFlag;
+        }
+    }
+
+    @Data
+    static class UpdateMemberResponse {
+
+        private String name;
+        private String email;
+
+        public UpdateMemberResponse(String name, String email) {
+
+            this.name = name;
+            this.email = email;
         }
     }
 }
