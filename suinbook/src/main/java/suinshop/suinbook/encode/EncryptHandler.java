@@ -2,7 +2,7 @@ package suinshop.suinbook.encode;
 
 public interface EncryptHandler {
 
-    String encrypt(String password);
+    public String encrypt(String password);
 
-    boolean isMathch(String password, String hashpassword);
+    public boolean isMathch(String password, String hashpassword);
 }

@@ -1,6 +1,6 @@
-package suinshop.suinbook.page;
+package suinshop.suinbook.boardpage;
 
-public class PageUtil {
+public class BoardPage {
 
     Integer currentPageNum;         // 현재 페이지 번호
 
@@ -24,7 +24,7 @@ public class PageUtil {
      * 2) setObjectStartAndEnd()를 호출하여 한 화면에 표시되는 오브젝트의 시작과 마지막을 설정한다.
      *
      */
-    public PageUtil() {
+    public BoardPage() {
         this.currentPageNum = 1;
         this.objectCountPerPage = 10;
         this.pageNumCountPerPage = 10;
@@ -40,7 +40,7 @@ public class PageUtil {
      *
      * @param currentPageNum
      */
-    public PageUtil(int currentPageNum) {
+    public BoardPage(int currentPageNum) {
         this.currentPageNum = (0 < currentPageNum) ? currentPageNum : 1 ;
         this.objectCountPerPage = 10;
         this.pageNumCountPerPage = 10;
@@ -57,7 +57,7 @@ public class PageUtil {
      * @param objectCountPerPage
      * @param pageNumCountPerPage
      */
-    public PageUtil(int currentPageNum, int objectCountPerPage, int pageNumCountPerPage) {
+    public BoardPage(int currentPageNum, int objectCountPerPage, int pageNumCountPerPage) {
         this.currentPageNum = (0 < currentPageNum) ? currentPageNum : 1 ;
         this.objectCountPerPage = (0 < objectCountPerPage) ? objectCountPerPage : 10 ;
         this.pageNumCountPerPage = (0 < pageNumCountPerPage) ? pageNumCountPerPage : 10 ;

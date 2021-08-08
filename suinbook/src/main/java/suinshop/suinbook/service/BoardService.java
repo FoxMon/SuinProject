@@ -3,9 +3,9 @@ package suinshop.suinbook.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import suinshop.suinbook.boardpage.BoardPage;
 import suinshop.suinbook.domain.Board;
 import suinshop.suinbook.exception.ResourceNotFoundException;
-import suinshop.suinbook.page.PageUtil;
 import suinshop.suinbook.repository.BoardRepository;
 
 import java.time.LocalDateTime;
@@ -29,7 +29,7 @@ public class BoardService {
 
         Map result = null;
 
-        PageUtil pu = new PageUtil(p_num, 5, 5); // ($1:표시할 현재 페이지, $2:한페이지에 표시할 글 수, $3:한 페이지에 표시할 페이지 버튼의 수 )
+        BoardPage pu = new BoardPage(p_num, 5, 5); // ($1:표시할 현재 페이지, $2:한페이지에 표시할 글 수, $3:한 페이지에 표시할 페이지 버튼의 수 )
 
         List<Board> list = boardRepository.findFromTo(pu.getObjectStartNum(), pu.getObjectCountPerPage());
         pu.setObjectCountTotal(findAllCount());
